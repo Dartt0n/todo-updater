@@ -15,7 +15,8 @@ Executable file will be ./target/release/todo-updater
 
 ## Misc
 
-I use it for update my conky todo
+I use it for update my conky todo.
+
 For example you can add
 ```
 conky.text = [[...
