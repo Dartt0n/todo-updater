@@ -9,6 +9,7 @@ const FILE_PATH: &str = "/home/dartt0n/.config/conky/todo.txt";
 const DONE: &str = "";
 const NOT_DONE: &str = "";
 
+#[derive(std::cmp::PartialEq)]
 enum Mode {
     Error,
     Add,
@@ -47,11 +48,6 @@ fn print_help() {
 
 fn main() {
     let args = args().collect::<Vec<String>>()[1..].to_owned();
-    if args.len() != 2 {
-        println!("Wrong count of arguments");
-        print_help();
-        exit(1);
-    }
     // parsing args and changing mode
     let mode = match args[0].as_str() {
         "done" | "complete" | "d" | "c" => Mode::Complete,
@@ -93,6 +89,11 @@ fn main() {
     }
 
     // different actions depending on mode
+    if args.len() != 2 && mode != Mode::Add {
+        println!("Wrong count of arguments");
+        print_help();
+        exit(1);
+    }
     match mode {
         Mode::Error => {
             println!("Unknown parameter {}", args[0]);
