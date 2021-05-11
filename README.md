@@ -19,7 +19,9 @@ I use it for update my conky todo.
 
 For example you can add
 ```
-conky.text = [[...
+conky.text = [[
+
+...
 $hr
 TODO:
 ${font Hack\ Nerd\ Font\ Mono}${exec cat /home/dartt0n/.config/conky/todo.txt}$font
