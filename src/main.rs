@@ -90,7 +90,7 @@ fn main() {
     }
 
     // different actions depending on mode
-    if args.len() != 2 && mode != Mode::Add || mode != Mode::Help {
+    if args.len() != 2 && (mode != Mode::Add || mode != Mode::Help) {
         println!("Wrong count of arguments");
         print_help();
         exit(1);
