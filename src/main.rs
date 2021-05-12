@@ -49,6 +49,11 @@ fn print_help() {
 
 fn main() {
     let args = args().collect::<Vec<String>>()[1..].to_owned();
+    if args.len() < 1 {
+        println!("Not enough arguments");
+        print_help();
+        exit(1);
+    }
     // parsing args and changing mode
     let mode = match args[0].as_str() {
         "done" | "complete" | "d" | "c" => Mode::Complete,
@@ -90,7 +95,7 @@ fn main() {
     }
 
     // different actions depending on mode
-    if args.len() != 2 && (mode != Mode::Add || mode != Mode::Help) {
+    if (mode == Mode::Complete || mode == Mode::Uncomplete) && args.len() != 2 {
         println!("Wrong count of arguments");
         print_help();
         exit(1);
