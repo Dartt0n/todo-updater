@@ -31,7 +31,8 @@ fn print_help() {
     done | complete | d | c     [N]     Marking task number N as completed
     undone | uncomplete | u     [N]     Marking task number N as uncompleted
     add | new | a | n           [TEXT]  Adding new test with text TEXT
-    remove | delete | rm | del  [N]     Removing task number N (also move other)\n\
+    remove | delete | rm | del  [N]     Removing task number N (also move other)
+    -h | --help | help                  Print this message\n\
     Examples:
     todo done 1
     
@@ -89,7 +90,7 @@ fn main() {
     }
 
     // different actions depending on mode
-    if args.len() != 2 && mode != Mode::Add {
+    if args.len() != 2 && mode != Mode::Add || mode != Mode::Help {
         println!("Wrong count of arguments");
         print_help();
         exit(1);
